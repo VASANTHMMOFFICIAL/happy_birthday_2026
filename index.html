@@ -1542,7 +1542,7 @@ section {
       </figure>
         <figure class="gallery-photo" data-category="college">
         <span class="gallery-category-tag">College</span>
-        <div class="gallery-media"><img src="images/college1-9.JPG" alt="Graduation day" loading="lazy"></div>
+        <div class="gallery-media"><img src="images/college1-9.jpg" alt="Graduation day" loading="lazy"></div>
        
       </figure>
         <figure class="gallery-photo" data-category="college">
@@ -1831,34 +1831,34 @@ section {
         <figcaption>final output</figcaption>
       </figure>
     
-        <figure class="gallery-photo" data-category="project" data-type="video" data-video="videos/project-4.mp4">
+        <!-- <figure class="gallery-photo" data-category="project" data-type="video" data-video="videos/project-4.mp4">
         <span class="gallery-category-tag">Project</span>
         <div class="gallery-media">
           <video src="videos/project-4.mp4" controls playsinline muted loop preload="metadata"></video>
         </div>
         <figcaption>Project IBM</figcaption>
-      </figure>
-        <figure class="gallery-photo" data-category="project" data-type="video" data-video="videos/project-5.mp4">
+      </figure> -->
+        <!-- <figure class="gallery-photo" data-category="project" data-type="video" data-video="videos/project-5.mp4">
         <span class="gallery-category-tag">Project</span>
         <div class="gallery-media">
           <video src="videos/project-5.mp4" controls playsinline muted loop preload="metadata"></video>
         </div>
         <figcaption>Project IOT taking shape</figcaption>
-      </figure>
-        <figure class="gallery-photo" data-category="project" data-type="video" data-video="videos/project-6.mp4">
+      </figure> -->
+        <!-- <figure class="gallery-photo" data-category="project" data-type="video" data-video="videos/project-6.mp4">
         <span class="gallery-category-tag">Project</span>
         <div class="gallery-media">
           <video src="videos/project-6.mp4" controls playsinline muted loop preload="metadata"></video>
         </div>
         <figcaption>Project IOT Taking Shape</figcaption>
-      </figure>
-        <figure class="gallery-photo" data-category="project" data-type="video" data-video="videos/project-7.mp4">
+      </figure> -->
+        <!-- <figure class="gallery-photo" data-category="project" data-type="video" data-video="videos/project-7.mp4">
         <span class="gallery-category-tag">Project</span>
         <div class="gallery-media">
           <video src="videos/project-7.mp4" controls playsinline muted loop preload="metadata"></video>
         </div>
         <figcaption>Project IOT output</figcaption>
-      </figure>
+      </figure> -->
   <figure class="gallery-photo" data-category="project">
         <span class="gallery-category-tag">Project</span>
         <div class="gallery-media"><img src="images/project-8.jpg" alt="Project showcase" loading="lazy"></div>
@@ -1911,7 +1911,7 @@ section {
 <canvas id="confetti-canvas" aria-hidden="true"></canvas>
 
 <!-- ================= AUDIO ================= -->
-<audio id="bday-audio" autoplay loop preload="auto">
+<audio id="bday-audio" loop preload="auto">
   <source src="audio/birthday-music.mp3" type="audio/mpeg">
 </audio>
 
@@ -2422,12 +2422,14 @@ document.addEventListener('DOMContentLoaded', () => {
   let musicPlaying = false;
 
   audio.volume = 1;
-  audio.play().then(() => {
-    musicPlaying = true;
-    setMusicState(true);
-  }).catch(() => {
-    setMusicState(false);
-  });
+  if (location.hostname.endsWith('.github.io')) {
+    audio.play().then(() => {
+      musicPlaying = true;
+      setMusicState(true);
+    }).catch(() => {
+      setMusicState(false);
+    });
+  }
 
   musicBtn.addEventListener('click', () => {
     if (musicPlaying) {
