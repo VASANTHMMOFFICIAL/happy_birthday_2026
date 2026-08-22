@@ -2372,7 +2372,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ---------------------------------------------------
-     11. MUSIC TOGGLE (no autoplay)
+    11. MUSIC TOGGLE
   --------------------------------------------------- */
   const musicBtn = document.getElementById('music-btn');
   const audio = document.getElementById('bday-audio');
@@ -2422,7 +2422,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let musicPlaying = false;
 
   audio.volume = 1;
-  if (location.hostname.endsWith('.github.io')) {
+  function playMusic() {
     audio.play().then(() => {
       musicPlaying = true;
       setMusicState(true);
@@ -2430,6 +2430,13 @@ document.addEventListener('DOMContentLoaded', () => {
       setMusicState(false);
     });
   }
+
+  playMusic();
+  ['pointerdown', 'keydown'].forEach((eventName) => {
+    document.addEventListener(eventName, () => {
+      if (!musicPlaying) playMusic();
+    }, { once: true });
+  });
 
   musicBtn.addEventListener('click', () => {
     if (musicPlaying) {
